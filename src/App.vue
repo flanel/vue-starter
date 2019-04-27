@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h1>Twój mail to  {{email}} </h1>
     <div v-if="email.length > 0">
-        <h2>Witaj {{email}}</h2>
-        <button @click="logMeOut"> Wyloguj </button>
+        <login-status :username="email"
+                      @logout="logMeOut()">
+        </login-status>
+
     </div>
 
     <div v-else>
@@ -25,10 +26,10 @@
 <script>
     import "milligram";
     import LoginForm from './LoginForm.vue';
-
+    import LoginStatus from './LoginStatus.vue';
 
     export default {
-        components: {LoginForm},
+        components: {LoginForm, LoginStatus},
         data() {
             return {
                 email: ''

@@ -14,6 +14,7 @@
                 email: ''
             }
         },
+
         methods: {
             enter() {
                 this.$emit('login', this.email);
