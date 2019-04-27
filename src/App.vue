@@ -6,7 +6,7 @@
       <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
       <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
       <input type="email" v-model="email" >
-      <button @click="alertMyEmail()"> Zaloguj </button>
+      <button @click="logIn()"> Zaloguj </button>
     </div>
     <div v-else-if="loged==true">
       <h2>Witaj {{email}}</h2>
@@ -15,29 +15,33 @@
   </div>
 </template>
 
-<script>
+<!--- ###################################################   -->
 
-export default {
-    data() {
-        return {
-            email: 'mail@mail.pl',
-            password: '',
-            loged: false
-        };
-    },
-    methods: {
-        alertMyEmail() {
-            alert("zalogowano");
-            this.loged = true;
+<script>
+    import "milligram";
+
+    export default {
+        data() {
+            return {
+                email: 'mail@mail.pl',
+                password: '',
+                loged: false
+            };
         },
-        logOut() {
-            alert("wylogowano");
-            this.loged = false;
+        methods: {
+            logIn() {
+                alert("zalogowano");
+                this.loged = true;
+            },
+            logOut() {
+                alert("wylogowano");
+                this.loged = false;
+            }
         }
     }
-}
-
 </script>
+
+<!--- ###################################################   -->
 
 <style>
 
