@@ -3,11 +3,19 @@
     <h1>Twój mail to  {{email}} </h1>
     <div v-if="email.length > 0">
         <h2>Witaj {{email}}</h2>
-        <button @click="logOut"> Wyloguj </button>
+        <button @click="logMeOut"> Wyloguj </button>
     </div>
 
     <div v-else>
-        <login-form @login="logIn($event)"></login-form>
+        <login-form @login="logMeIn($event)"
+                    button-label="Zaloguj"
+                    haeder="Logowanie">
+        </login-form>
+        <login-form @login="logMeIn($event)"
+                    button-label="Zarejestruj"
+                    haeder="Rejestracja">
+        </login-form>
+
     </div>
   </div>
 </template>
@@ -23,14 +31,14 @@
         components: {LoginForm},
         data() {
             return {
-                email: 'mail@mail.pl'
+                email: ''
             };
         },
         methods: {
-            logIn(username) {
+            logMeIn(username) {
                 this.email = username;
             },
-            logOut() {
+            logMeOut() {
                 this.email = '';
             }
         }
