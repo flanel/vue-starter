@@ -8,6 +8,8 @@
             </li>
         </ol>
 
+        <button @click="addMeeting()"> Dodaj nowe spotkanie </button>
+
     </div>
 </template>
 
@@ -22,7 +24,11 @@
                     'INNE',
                 ]
             };
+        },
+        methods: {
+            addMeeting() {
+                this.meetings.push("nowyMeeting");
+            }
         }
-
     }
 </script>
