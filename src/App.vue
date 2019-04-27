@@ -1,20 +1,13 @@
 <template>
   <div>
     <h1>Twój mail to  {{email}} </h1>
-    <div v-if="loged==false">
-      <div v-if="email.length < 10">Ale masz krótki adres!</div>
-      <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
-      <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
-
-        <form @submit.prevent="">
-            <input type="email" v-model="email">
-            <button @click="logIn()"> Zaloguj </button>
-        </form>
-
+    <div v-if="email.length > 0">
+        <h2>Witaj {{email}}</h2>
+        <button @click="logOut"> Wyloguj </button>
     </div>
-    <div v-else-if="loged==true">
-      <h2>Witaj {{email}}</h2>
-      <button @click="logOut"> Wyloguj </button>
+
+    <div v-else>
+        <login-form @login="logIn($event)"></login-form>
     </div>
   </div>
 </template>
@@ -23,23 +16,21 @@
 
 <script>
     import "milligram";
+    import LoginForm from './LoginForm.vue';
+
 
     export default {
+        components: {LoginForm},
         data() {
             return {
-                email: 'mail@mail.pl',
-                password: '',
-                loged: false
+                email: 'mail@mail.pl'
             };
         },
         methods: {
-            logIn() {
-                alert("zalogowano");
-                this.loged = true;
+            logIn(username) {
+                this.email = username;
             },
             logOut() {
-                alert("wylogowano");
-                this.loged = false;
                 this.email = '';
             }
         }
