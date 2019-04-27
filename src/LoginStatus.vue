@@ -9,7 +9,7 @@
         </ol>
 
         <button @click="addMeeting()"> Dodaj nowe spotkanie </button>
-
+        <input type="text" v-model="meetingName">
     </div>
 </template>
 
@@ -22,12 +22,14 @@
                     'MWO',
                     'TO',
                     'INNE',
-                ]
+                ],
+                meetingName: ''
             };
         },
         methods: {
             addMeeting() {
-                this.meetings.push("nowyMeeting");
+                this.meetings.push(this.meetingName);
+                this.meetingName = ''
             }
         }
     }
